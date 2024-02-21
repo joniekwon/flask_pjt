@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> GPT-fortune </title>
+	<style>
+		/* wrap */
+		#content_wrap {
+			width: 500px;
+			position: absolute;
+			margin: 30px;
+			top:0px; left: 0px;
+		}
+
+		/* content */
+		#content_wrap .content {
+			border: 5px solid #ccc;
+			border-radius: 20px;
+			text-align: center;
+		}
+
+		#content_wrap .content > .title {
+			font-size: 1.7em;
+			font-weight: bolder;
+			padding-top: 30px;
+		}
+
+
+		/* form */
+		#content_wrap .content > .form {
+			width: 80%;
+			margin: 25px auto 0;
+		}
+
+		#content_wrap .content > .form .submit_btn {
+			width: 80%;
+			margin: 10px auto;
+		}
+
+        #content_wrap .content > .form .ex {
+			width: 80%;
+			margin: 15px auto 0;
+			text-align: center;
+			font-size: 0.8em;
+		}
+
+		#content_wrap .content > .form .submit_btn .sBtn {
+			padding: 5px 5px;
+			border: 1px solid #00465c;
+			border-radius: 10px;
+			font-weight: bolder;
+			box-shadow: 2px 2px 0px #ededed;
+			font-size: 1.1em;
+			color: #fff;
+			background-color: #00465c;
+			cursor: pointer;
+		}
+
+		#content_wrap .content > .form .submit_btn .sBtn:hover {
+			background-color: #baeaff;
+			box-shadow: 2px 2px 0px #ededed;
+			color: #04152b;
+		}
+
+		/* bottom */
+		#content_wrap > .bottom {
+			width: 90%;
+			margin: 15px auto 0;
+			text-align: center;
+			font-size: 0.8em;
+		}
+	</style>
+
+</head>
+<body>
+    <div id="content_wrap">
+		<div class="content">
+			<div class="title">지피티 도사</div>
+			<div class="form">
+                <form action="/projects/gpt-fortune-result" name="" method="get" onsubmit="return validateForm()">
+                    이름 <input class="name" type="text" name="user_name" value="" ><br><br>
+                    생년월일
+                    <select id="year" name="birth_year" onchange="updateDays()">
+                        {% for year in range(1960, 2025) %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="month" name="birth_month" onchange="updateDays()">
+                        {% for month in range(1, 13) %}
+                            <option value="{{ month }}">{{ month }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="day" name="birth_day">
+                        {% for day in range(1, 32) %}
+                            <option value="{{ day }}">{{ day }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    질문 <input class="query" type="text" name="user_query" value="">
+                    <div class="ex"> ex. 오늘 나의 금전운이 궁금해 or 취업운</div><br>
+                    <div class="submit_btn">
+                        <input class="sBtn" type="submit" value="질문하기">
+                    </div>
+                    <script>
+                        function updateDays() {
+                            var year = document.getElementById('year').value;
+                            var month = document.getElementById('month').value;
+                            var daysSelect = document.getElementById('day');
+                            var daysInMonth = new Date(year, month, 0).getDate();
+                            var selectedDay = daysSelect.value;
+
+                            // Clear previous options
+                            daysSelect.innerHTML = '';
+
+                            // Add new options
+                            for (var i = 1; i <= daysInMonth; i++) {
+                                var option = document.createElement('option');
+                                option.text = i;
+                                option.value = i;
+                                daysSelect.add(option);
+                            }
+
+                            // Preserve the selected day if still available
+                            if (selectedDay <= daysInMonth) {
+                                daysSelect.value = selectedDay;
+                            }
+                        }
+
+                        function validateForm() {
+                            var name = document.querySelector('.name').value;
+                            var query = document.querySelector('.query').value;
+
+                            if (name.trim() === '') {
+                                alert('이름을 입력해주세요.');
+                                return false;
+                            }
+
+                            if (query.trim() === '') {
+                                alert('질문을 입력해주세요.');
+                                return false;
+                            }
+
+                            return true;
+                        }
+                        // Initialize days
+                        updateDays();
+                    </script>
+</body>
+</html>

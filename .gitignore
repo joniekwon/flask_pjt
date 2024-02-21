@@ -1,0 +1,4 @@
+video/
+.env
+*/*.csv
+templates/projects/check_fake/

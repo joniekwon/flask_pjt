@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 강남아파트, 살 수 있을까? </title>
+	<style>
+		/* wrap */
+		#content_wrap {
+			width: 500px;
+			position: absolute;
+			margin: 30px;
+			top:0px; left: 0px;
+		}
+
+		/* content */
+		#content_wrap .content {
+			border: 5px solid #ccc;
+			border-radius: 20px;
+			text-align: center;
+		}
+
+		#content_wrap .content > .title {
+			font-size: 1.7em;
+			font-weight: bolder;
+			padding-top: 30px;
+		}
+
+
+		/* form */
+		#content_wrap .content > .form {
+			width: 80%;
+			margin: 25px auto 0;
+		}
+
+
+		#content_wrap .content > .form input.year {
+			width: 100px;
+			padding: 7px 10px;
+			border: 1px solid #dedede;
+			border-radius: 6px;
+		}
+
+
+		#content_wrap .content > .form select.dong {
+			padding: 7px 10px;
+			margin-left: 10px;
+			border: 1px solid #dedede;
+			border-radius: 6px;
+		}
+
+
+		/* how about price? */
+		#content_wrap .content > .form .submit_btn {
+			width: 80%;
+			margin: 10px auto;
+		}
+
+		#content_wrap .content > .form .submit_btn .sBtn {
+			padding: 5px 5px;
+			border: 1px solid #00465c;
+			border-radius: 10px;
+			font-weight: bolder;
+			box-shadow: 2px 2px 0px #ededed;
+			font-size: 1.1em;
+			color: #fff;
+			background-color: #00465c;
+			cursor: pointer;
+		}
+
+		#content_wrap .content > .form .submit_btn .sBtn:hover {
+			background-color: #baeaff;
+			box-shadow: 2px 2px 0px #ededed;
+			color: #04152b;
+		}
+
+		/* bottom */
+		#content_wrap > .bottom {
+			width: 90%;
+			margin: 15px auto 0;
+			text-align: center;
+			font-size: 0.8em;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="content_wrap">
+		<div class="content">
+			<div class="title">강남구 아파트</div>
+			<div class="form">
+				<form action="/projects/gangnam-apt/predict" name="" method="get">
+					<input class="year" type="number" name="predict_year" value="2022" > 년도
+					<select class="dong" name="predict_dong">
+						<option value='0'>개포동</option>
+						<option value='1'>논현동</option>
+						<option value='2'>대치동</option>
+						<option value='3'>도곡동</option>
+						<option value='4'>삼성동</option>
+						<option value='5'>세곡동</option>
+						<option value='6'>수서동</option>
+						<option value='7'>신사동</option>
+						<option value='8'>압구정동</option>
+						<option value='9'>역삼동</option>
+						<option value='10'>일원동</option>
+						<option value='11'>청담동</option>
+					</select>
+					<div class="submit_btn">
+						아파트 1평당 가격은 <input class="sBtn" type="submit" value="얼마일까?">
+					</div>
+				</form>
+			</div>
+			<br>
+		</div>
+		<div class="bottom">
+			* 2011~2020년도의 강남구 아파트 동별 평균 실거래가를 학습한 Polynomial Regression Model 입니다.
+		</div>
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+		/* wrap */
+		#content_wrap {
+			width: 500px;
+			position: absolute;
+			margin:30px;
+			top:0px; left: 0px;
+			z-index: 450;
+		}
+
+		/* content */
+		#content_wrap .content {
+			border: 5px solid #ccc;
+			border-radius: 20px;
+			text-align: center;
+			padding: 20px;
+		}
+
+		#content_wrap .content > .title {
+			font-size: 1.7em;
+			font-weight: bolder;
+			text-align: center;
+			padding-top: 30px;
+		}
+
+		#content_wrap .content > .result b {
+			font-size: 1.0em;
+			font-weight: bolder;
+			padding: 10px;
+		}
+
+        #content_wrap .back_Btn a {
+            position: fixed;
+            top: 65px; left: 70px;
+            z-index: 500;
+            border: 1px solid #343b35;
+            padding: 5px 10px;
+			border: 1px solid #dedede;
+			border-radius: 6px;
+			font-weight: bolder;
+			box-shadow: 2px 2px 0px #ededed;
+			cursor: pointer;
+			font-size: 0.9em;
+			background-color: #fff;
+			text-decoration: none;
+			color: #282b29;
+        }
+
+        #content_wrap .back_Btn a:hover {
+            background-color: #606361;
+			box-shadow: 2px 2px 0px #ededed;
+			color: #fff;
+        }
+
+		/* bottom */
+		#content_wrap > .bottom {
+			width: 90%;
+			margin: 10px auto 0;
+			text-align: center;
+			font-size: 0.8em;
+		}
+
+    </style>
+</head>
+<body>
+    <div id="content_wrap">
+        <div class = "content">
+            <div class="title">지피티 도사</div>
+            <br>
+            <div class="result">
+                <b>API 요청 횟수가 초과되었습니다. ㅠㅠ</b>
+            </div>
+        </div>
+		<div class="back_Btn">
+		    <a href="/projects/gpt-fortune">뒤로가기</a>
+		</div>
+    </div>
+</body>
+</html>

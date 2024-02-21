@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+		/* wrap */
+		#content_wrap {
+			width: 500px;
+			position: absolute;
+			margin:30px;
+			top:0px; left: 0px;
+			z-index: 450;
+		}
+
+		/* content */
+		#content_wrap .content {
+			border: 5px solid #ccc;
+			border-radius: 20px;
+			text-align: center;
+			padding: 20px;
+		}
+
+		#content_wrap .content > .title {
+			font-size: 1.7em;
+			font-weight: bolder;
+			padding-top: 30px;
+		}
+
+		#content_wrap .content > .result b {
+			font-size: 1.0em;
+			font-weight: bolder;
+			padding: 10px;
+		}
+
+        #content_wrap .back_Btn a {
+            position: fixed;
+            top: 65px; left: 70px;
+            z-index: 500;
+            border: 1px solid #343b35;
+            padding: 5px 10px;
+			border: 1px solid #dedede;
+			border-radius: 6px;
+			font-weight: bolder;
+			box-shadow: 2px 2px 0px #ededed;
+			cursor: pointer;
+			font-size: 0.9em;
+			background-color: #fff;
+			text-decoration: none;
+			color: #282b29;
+        }
+
+        #content_wrap .back_Btn a:hover {
+            background-color: #606361;
+			box-shadow: 2px 2px 0px #ededed;
+			color: #fff;
+        }
+
+		/* bottom */
+		#content_wrap > .bottom {
+			width: 90%;
+			margin: 10px auto 0;
+			text-align: center;
+			font-size: 0.8em;
+		}
+
+    </style>
+</head>
+<body>
+    <div id="content_wrap">
+        <div class = "content">
+            <div class="title">강남구 아파트</div>
+            <img src="https://jungin.pythonanywhere.com/saveFig/{{predict_year}}/{{predict_price}}/{{price1}}/{{price2}}/{{price3}}/{{price4}}" width="350" height="auto"><br>
+            <div class="result">
+                <b>{{ predict_year }}</b>년의 강남구 <b>{{ predict_dong }}</b>의 아파트의 가격은<br> 1평당<b>{{ predict_price }}만원</b>으로 예상됩니다. (정확도:{{ score }}%)
+            </div>
+        </div>
+        <div class="bottom">
+			* 2011~2020년도의 강남구 아파트 평균 실거래가를 동별로 나누어 학습한 LinearRegression 모델입니다.
+		</div>
+		<div class="back_Btn">
+		    <a href="/projects/project1">뒤로가기</a>
+		</div>
+    </div>
+</body>
+</html>
